@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <title>Document</title>
+  <style>
+ @import url('https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@400..700&family=Protest+Revolution&family=Satisfy&family=Whisper&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  
+}
+body{
+  overflow-x: hidden;
+}
+
+
+.navbar {
+  background-color: rgb(73, 51, 153);
+  height: 80px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 30px;
+  position: fixed;
+  -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.41);
+          box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.41);
+  z-index: 2;
+}
+
+
+.logo-container > a {
+  color: ghostwhite;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.navigation-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 40px;
+ 
+}
+
+.navigation-items > a {
+  color: ghostwhite;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 20px;
+  -webkit-transition: .4s ease-in-out;
+  -o-transition: .4s ease-in-out;
+  transition: .4s ease-in-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding-right: 30px;
+  padding-top: 5px;
+}
+
+.navigation-items > a:hover {
+  color: white;
+}
+
+.hamburger {
+  display: none;
+  font-size: 20px;
+  font-weight: 800;
+  background-color: #15418200;
+  color: white;
+}
+
+@media screen and (max-width:768px) {
+  .hamburger {
+    position: absolute;
+    left: 89%;
+    display: flex;
+    cursor: pointer;
+  }
+  .hamburger #closeHam {
+    display: none;
+  }
+  .navigation-items {
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: absolute;
+    right: 0;
+    top: 58px;
+    background-color: rgb(73, 51, 153);
+    width: 100%;
+    height: calc(100vh - 58px);
+    padding-top: 60px;
+    gap: 5vh;
+  }
+
+.close{
+  color: red; font-size: 150px; font-weight: bolder;left:140px;
+}
+
+.popup {
+  position: fixed;
+  top: 20%;
+  left: 20%;
+  width: 90%;
+  height: 71%;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 2000;
+  -webkit-transition: visibility 0s, opacity 0.5s;
+  -o-transition: visibility 0s, opacity 0.5s;
+  transition: visibility 0s, opacity 0.5s;
+}
+}
+
+
+.close{
+  color: red; font-size: 150px; font-weight: bolder;left:740px
+}
+.theme-toggle {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 20px;
+  border: 1px solid white;
+  padding: 3px 8px;
+  border-radius: 50%;
+  -webkit-box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.48) ,
+  inset 2px 2px 5px rgba(74, 73, 73, 0.497),
+  2px 2px 5px rgba(0, 0, 0, 0.71);
+          box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.48) ,
+  inset 2px 2px 5px rgba(74, 73, 73, 0.497),
+  2px 2px 5px rgba(0, 0, 0, 0.71);
+  
+}
+body.dark-mode {
+  background-color: #222;
+}
+
+body.dark-mode .navbar {
+  background-color: #333;
+}
+
+body.dark-mode .navigation-items > a {
+  color: #ccc;
+}
+
+body.dark-mode .navigation-items > a:hover {
+  color: #fff;
+}
+
+body.dark-mode .hamburger {
+  color: #ccc;
+}
+
+body.dark-mode .hamburger:hover {
+  color: #fff;
+}
+
+
+.popup {
+  position: fixed;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 71%;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 2000;
+  -webkit-transition: visibility 0s, opacity 0.5s;
+  -o-transition: visibility 0s, opacity 0.5s;
+  transition: visibility 0s, opacity 0.5s;
+}
+
+.popup.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup-inner {
+  background-color: white;
+  padding: 50px;
+  border-radius: 5px;
+  position: relative;
+  
+}
+.container4 {
+    background-color: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+    border-radius: 10px;
+    padding-bottom: 5px;
+    color: #ccc;
+    position: relative;
+    top: -20px;
+   padding-bottom: 10px;
+    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container4:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.container4:active {
+    background-color: rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.container4:focus {
+    background-color: rgba(255, 255, 255, 0.4);
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+.container4 p{
+    font-family: "Satisfy", sans-serif;
+    font-weight: 200;
+    font-size: 15px;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+ display: -webkit-box;
+ display: -ms-flexbox;
+ display: flex;
+ -webkit-box-align: center;
+     -ms-flex-align: center;
+         align-items: center;-webkit-box-pack: center;-ms-flex-pack: center;justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background-color: #212121;
+}
+
+
+
+
+
+
+        h1, p {
+            text-align: center;
+        }
+        .btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            -webkit-transition: background-color 0.3s;
+            -o-transition: background-color 0.3s;
+            transition: background-color 0.3s;
+            -webkit-box-shadow: -2px -2px 3px rgba(181, 181, 181, 0.446) ,
+  inset 5px 5px 5px rgba(74, 73, 73, 0.497),
+  5px 5px 5px rgba(0, 0, 0, 0.71);
+                    box-shadow: -2px -2px 3px rgba(181, 181, 181, 0.446) ,
+  inset 5px 5px 5px rgba(74, 73, 73, 0.497),
+  5px 5px 5px rgba(0, 0, 0, 0.71);
+  z-index: 1000;
+        }
+        
+        .btn:hover {
+            background-color: #154182;
+        }
+
+  .carousel.slide{
+    position: absolute;
+    top: 20px;
+    left: 60px;
+    height: 460px;
+    width: 720px;
+    overflow: hidden;
+    -webkit-box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    border:4px solid white;
+    border-radius: 12px;
+  }
+  .d-block{
+    height: 400px;
+    width: 860px;
+  }
+  .box{
+    width: 100vw;
+    background-color: #007bff;
+    min-width: 100vw;
+    height: 71vh;
+   position: absolute;
+   top: 82px;
+   z-index: -2;
+  }
+  .container2 {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+  
+    padding: 1% 1%;
+    position: absolute;
+   top: 782px;
+    height: 60vh;
+  }
+
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:200');
+
+
+.wrapper {
+  position: absolute;
+  top: 110%;
+  left: 40%;
+  width: 300px;
+  height: 500px;
+  -webkit-perspective: 900px;
+          perspective: 900px;
+}
+
+.container1 {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: .5s all ease;
+  -o-transition: .5s all ease;
+  transition: .5s all ease;
+  -webkit-transform: rotateX(60deg) scale(0.7);
+          transform: rotateX(60deg) scale(0.7);
+  -webkit-perspective: 900px;
+          perspective: 900px;
+  -webkit-box-shadow: 0px 20px 50px #555;
+          box-shadow: 0px 20px 50px #555;
+  -webkit-animation: entry 1s linear 1;
+          animation: entry 1s linear 1;
+}
+
+#c0 {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, #eba65b), to(#d99267));
+  background: -o-linear-gradient(top, #eba65b 30%, #d99267 100%);
+  background: linear-gradient(to bottom, #eba65b 30%, #d99267 100%);
+  z-index: 300;
+  -webkit-box-shadow: 0px 20px 100px #555;
+          box-shadow: 0px 20px 100px #555;
+}
+
+#c1 {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, #59476f), to(#7b88d1));
+  background: -o-linear-gradient(top, #59476f 30%, #7b88d1 100%);
+  background: linear-gradient(to bottom, #59476f 30%, #7b88d1 100%);
+  -webkit-box-shadow: 0px 20px 100px #555;
+          box-shadow: 0px 20px 100px #555;
+  left: 100%;
+  z-index: 0;
+}
+
+#c2 {
+  left: -100%;
+  z-index: 0;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, #59476f), to(#7b88d1));
+  background: -o-linear-gradient(top, #59476f 30%, #7b88d1 100%);
+  background: linear-gradient(to bottom, #59476f 30%, #7b88d1 100%);
+  -webkit-box-shadow: 0px 20px 100px #555;
+          box-shadow: 0px 20px 100px #555;
+}
+
+.container1:hover {
+  cursor: pointer;
+  -webkit-transform: rotate(0deg) scale(1) translateY(10px);
+      -ms-transform: rotate(0deg) scale(1) translateY(10px);
+          transform: rotate(0deg) scale(1) translateY(10px);
+  -webkit-transition: .5s all ease;
+  -o-transition: .5s all ease;
+  transition: .5s all ease;
+  z-index: 400;
+}
+
+.image {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 55%;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(30%, #eba65b), to(#d99267));
+  background: -o-linear-gradient(bottom, #eba65b 30%, #d99267 100%);
+  background: linear-gradient(to top, #eba65b 30%, #d99267 100%);
+}
+
+#i1 {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, #59476f), to(#7b88d1));
+  background: -o-linear-gradient(top, #59476f 30%, #7b88d1 100%);
+  background: linear-gradient(to bottom, #59476f 30%, #7b88d1 100%);
+}
+
+#i2 {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, #59476f), to(#7b88d1));
+  background: -o-linear-gradient(top, #59476f 30%, #7b88d1 100%);
+  background: linear-gradient(to bottom, #59476f 30%, #7b88d1 100%);
+}
+
+span {
+  position: absolute;
+  top: 0%;
+  left: 55%;
+  border-radius: 100%;
+  background-color: #fff;
+  z-index: 10;
+}
+
+.sun {
+  position: absolute;
+  top: 50%;
+  height: 50%;
+  left: 0%;
+  width: 100%;
+}
+
+.sun1 {
+  width: 50px;
+  height: 50px;
+  -webkit-box-shadow: 0px 0px 10px #fff;
+          box-shadow: 0px 0px 10px #fff;
+}
+
+.st4 {
+  fill: #f8c56f;
+  opacity: 1;
+}
+
+.st5,
+.st7 {
+  fill: #fff;
+}
+
+#sh2 {
+  opacity: 0.5;
+}
+
+#sh3 {
+  opacity: 0.3;
+}
+
+.st6 {
+  fill: #59476f;
+}
+
+.st10 {
+  fill: #c5a7e5;
+  stroke: #222;
+}
+
+.st11 {
+  stroke: #212121;
+  opacity: 0.5;
+}
+
+#sh1 {
+  fill: #f8c56f;
+  opacity: 0.4;
+}
+
+.st0 {
+  fill: #a25a62;
+  stroke: none;
+  stroke-miterlimit: 10;
+}
+
+.st1 {
+  fill: none;
+  stroke: #a25a62;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+}
+
+.st2 {
+  fill: #cd775c;
+}
+
+.st3 {
+  fill: #fff;
+  opacity: 0.3;
+}
+
+.story {
+  position: absolute;
+  top: 45%;
+  left: 0%;
+  height: 55%;
+  width: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(#eba65b), color-stop(40%, #d99267));
+  background: -o-linear-gradient(top, #eba65b 0%, #d99267 40%);
+  background: linear-gradient(to bottom, #eba65b 0%, #d99267 40%);
+  z-index: 30;
+}
+
+#s1 {
+  background: -webkit-gradient(linear, left bottom, left top, from(#5b62a2), to(#7b88d1));
+  background: -o-linear-gradient(bottom, #5b62a2 0%, #7b88d1 100%);
+  background: linear-gradient(to top, #5b62a2 0%, #7b88d1 100%);
+}
+
+#s2 {
+  background: -webkit-gradient(linear, left bottom, left top, from(#5b62a2), color-stop(120%, #7b88d1));
+  background: -o-linear-gradient(bottom, #5b62a2 0%, #7b88d1 120%);
+  background: linear-gradient(to top, #5b62a2 0%, #7b88d1 120%);
+}
+
+.info {
+  position: absolute;
+  top: 10%;
+}
+
+h3 {
+  text-align: center;
+  text-shadow: 0px 0px 10px #eee;
+  color: #eee;
+  letter-spacing: 2px;
+}
+
+h4 {
+  color: #111;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  letter-spacing: 2px;
+}
+
+h1 {
+  color: #111;
+  position: fixed;
+  top: 0%;
+  left: 30%;
+  letter-spacing: 2px;
+}
+
+p {
+  font-size: 14px;
+  color: #fff;
+  padding: 0px 20px 20px 20px;
+  line-height: 150%;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.page {
+  position: absolute;
+  top: 80%;
+  width: 100%;
+  left: 0%;
+  height: 20%;
+  z-index: 30;
+}
+
+li {
+  position: absolute;
+  top: 50%;
+  list-style: none;
+  color: #111;
+}
+
+li:nth-child(1) {
+  left: 15%;
+  -webkit-animation: simple1 1s linear infinite;
+          animation: simple1 1s linear infinite;
+}
+
+li:nth-child(2) {
+  right: 15%;
+  -webkit-animation: simple 1s linear infinite;
+          animation: simple 1s linear infinite;
+}
+
+@-webkit-keyframes simple {
+  50% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+    opacity: 0.5;
+  }
+  100% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+    opacity: 0;
+  }
+}
+
+@keyframes simple {
+  50% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+    opacity: 0.5;
+  }
+  100% {
+    -webkit-transform: translateX(10px);
+            transform: translateX(10px);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes simple1 {
+  50% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+    opacity: 0.5;
+  }
+  100% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+    opacity: 0;
+  }
+}
+
+@keyframes simple1 {
+  50% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+    opacity: 0.5;
+  }
+  100% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes entry {
+  0% {
+    top: -20%;
+    opacity: 0.1;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+@keyframes entry {
+  0% {
+    top: -20%;
+    opacity: 0.1;
+  }
+  100% {
+    top: 0%;
+  }
+}
+.projects{
+  position: absolute;
+  top: 83%;
+  left: 35%;
+  font-family:"Protest Revolution", sans-serif;
+  font-weight: bolder;
+  font-size: 70px;
+  color: #0056b3;
+  z-index: -1;
+}
+body.dark-mode .projects{
+  color: white;
+}
+.gallery {
+  width: 30%;
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 5px;
+ left: 2%;
+  position: absolute;
+  top: 99%;
+  z-index: -1;
+}
+.d-block{
+  height: 455px;
+}
+
+.gallery img {
+  width: 50%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+  -webkit-transition: all ease 0.3s;
+  -o-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+  border: 4px solid rgb(71, 129, 216);
+}
+body.dark-mode .gallery img {
+  
+  width: 50%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+  -webkit-transition: all ease 0.5s;
+  -o-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+  border: 4px solid white;
+}
+body.dark-mode .gallery img:hover {
+  width: 100%;
+}
+
+.gallery img:hover {
+  width: 100%;
+}
+.popup-inner{
+  background-image: url(https://getwallpapers.com/wallpaper/full/5/6/3/637055.jpg); 
+  border-radius: 20px;
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+body.dark-mode .popup-inner{
+  background-image: url(https://wallpaperaccess.com/full/1685418.jpg); 
+  border-radius: 20px;
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+
+
+
+.form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 40%;
+  left: 59%;
+  top: 15%;
+  height: 460px;
+  z-index: -1;
+  position: absolute;
+  -webkit-box-shadow: -8px -8px 8px rgba(255, 255, 255, 0.155), inset 4px 4px 4px rgba(5, 5, 5, 0.446), 8px 8px 8px rgba(0, 0, 0, 0.4);
+          box-shadow: -8px -8px 8px rgba(255, 255, 255, 0.155), inset 4px 4px 4px rgba(5, 5, 5, 0.446), 8px 8px 8px rgba(0, 0, 0, 0.4);
+}
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+input[type=email], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+input[type=number], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+input[type=submit] {
+  width: 40%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  position: relative;
+  top: -20px;
+  left: 30%;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  -webkit-box-shadow: -8px -8px 8px rgba(255, 255, 255, 0.324), inset 4px 4px 4px rgba(5, 5, 5, 0.446), 8px 8px 8px rgba(0, 0, 0, 0.4);
+          box-shadow: -8px -8px 8px rgba(255, 255, 255, 0.324), inset 4px 4px 4px rgba(5, 5, 5, 0.446), 8px 8px 8px rgba(0, 0, 0, 0.4);
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+.about h1{
+  background-color: white;
+}
+body.dark-mode .about h1{
+  background-color: #222;
+}
+.about h1{
+  position: absolute;
+  top: 149%;
+  left: 38%;
+  font-family:Protest Revolution, sans-serif;
+  font-weight: bolder;
+  font-size: 70px;color: #0056b3;
+  z-index: -1;padding: 4px -4px;border-radius: 12px;
+}
+
+.about .content p{
+  position: absolute;
+  top: 157%;
+  padding-top: 20px;
+  left: 5%;
+  color: #111;
+  width: 88%;
+  
+  -webkit-box-align: center;
+  
+      -ms-flex-align: center;
+  
+          align-items: center;
+  font-weight: bolder;
+  font-size: 18px;
+  z-index: -2; border:3px double #0056b3;
+ color:rgb(0, 0, 0);
+}
+body.dark-mode .about p{
+ color:rgb(255, 255, 255);
+}
+.title h1{
+  position: absolute;
+  top: 192%;
+  font-style: underline;
+  left: 38%;
+  font-family:Protest Revolution, sans-serif;
+  font-weight: bolder;
+  font-size: 70px;color: #0056b3;
+  z-index: -1;padding: 4px -4px;border-radius: 12px;
+}
+.cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  position: absolute;
+  top: 210%;
+  width: 100%;
+}
+
+.flip-card {
+  width: 260px;
+  height: 340px;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  -webkit-transition: -webkit-transform 0.6s;
+  transition: -webkit-transform 0.6s;
+  -o-transition: transform 0.6s;
+  transition: transform 0.6s;
+  transition: transform 0.6s, -webkit-transform 0.6s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+          box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.flip-card:hover .flip-card-inner {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border-radius: 10px;
+  -webkit-box-shadow: -8px -8px 8px rgba(255, 255, 255, 0.155), inset 4px 4px 4px rgba(5, 5, 5, 0.231), 8px 8px 8px rgba(0, 0, 0, 0.4);
+          box-shadow: -8px -8px 8px rgba(255, 255, 255, 0.155), inset 4px 4px 4px rgba(5, 5, 5, 0.231), 8px 8px 8px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.1)));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+}
+
+.flip-card-front {
+  z-index: 2;
+  color: white;
+  text-align: left;
+  
+  border-radius: 10px;
+  -webkit-box-shadow: -8px -8px 8px rgba(255, 255, 255, 0.155), inset 4px 4px 4px rgba(5, 5, 5, 0.246), 8px 8px 8px rgba(0, 0, 0, 0.4);
+          box-shadow: -8px -8px 8px rgba(255, 255, 255, 0.155), inset 4px 4px 4px rgba(5, 5, 5, 0.246), 8px 8px 8px rgba(0, 0, 0, 0.4);
+}
+body.dark-mode .flip-card-front p{
+  color: rgb(242, 242, 242);
+  font-size: 14px;
+  margin-top: 35px;
+}
+
+body.dark-mode .flip-card-front h1{
+  font-size: 25px;
+  width: 100%;
+  left: 5%;
+  color: #007bff;
+
+}
+
+.flip-card-front p{
+  color: black;
+  font-size: 14px;
+  margin-top: 35px;
+}
+.flip-card-front h1{
+  font-size: 25px;
+  width: 100%;
+  left: 5%;
+  color: #007bff;
+}
+
+.flip-card-back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  -webkit-box-shadow: -8px -8px 8px rgba(255, 255, 255, 0.111), inset 4px 4px 4px rgba(5, 5, 5, 0.25), 8px 8px 8px rgba(0, 0, 0, 0.4);
+          box-shadow: -8px -8px 8px rgba(255, 255, 255, 0.111), inset 4px 4px 4px rgba(5, 5, 5, 0.25), 8px 8px 8px rgba(0, 0, 0, 0.4);
+  border: 2px solid white;
+  
+}
+.flip-card-back img{
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.heading{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: bolder;
+  font-size: 60px;
+  font-family:Protest Revolution, sans-serif;
+  color: #0056b3;
+  
+
+}
+.heading span{
+  position: relative;
+  left: 20px;
+  background-color: #ffffff00;
+}
+.contact{
+  position: absolute;
+  top: 270%;
+  left: 10%;
+  width: 80%;
+  height: 510px;
+
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.1)));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 12px;
+  border: 1px solid rgb(110, 109, 109);
+  -webkit-box-shadow: -4px -4px 4px rgba(255, 255, 255, 0.111), inset 4px 4px 4px rgba(5, 5, 5, 0.131), 4px 4px 4px rgba(72, 72, 72, 0.164);
+          box-shadow: -4px -4px 4px rgba(255, 255, 255, 0.111), inset 4px 4px 4px rgba(5, 5, 5, 0.131), 4px 4px 4px rgba(72, 72, 72, 0.164);
+}
+.contact h2{
+    margin-bottom: 3rem;
+
+}
+.contact form{
+    min-width: 40rem;
+    margin: 1rem auto;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+
+.contact form .input-box{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+}
+.contact form .input-box input{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    color: rgb(68, 68, 68);
+}
+body.dark-mode .contact form .input-box input{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    color: white;
+    
+}
+.contact form .input-box input::-webkit-input-placeholder{
+    color: rgb(58, 58, 58);
+    
+}
+.contact form .input-box input::-moz-placeholder{
+    color: rgb(58, 58, 58);
+    
+}
+.contact form .input-box input:-ms-input-placeholder{
+    color: rgb(58, 58, 58);
+    
+}
+.contact form .input-box input::-ms-input-placeholder{
+    color: rgb(58, 58, 58);
+    
+}
+.contact form .input-box input::placeholder{
+    color: rgb(58, 58, 58);
+    
+}
+
+body.dark-mode .contact form .input-box input::-webkit-input-placeholder{
+    color: white;
+    
+}
+
+body.dark-mode .contact form .input-box input::-moz-placeholder{
+    color: white;
+    
+}
+
+body.dark-mode .contact form .input-box input:-ms-input-placeholder{
+    color: white;
+    
+}
+
+body.dark-mode .contact form .input-box input::-ms-input-placeholder{
+    color: white;
+    
+}
+
+body.dark-mode .contact form .input-box input::placeholder{
+    color: white;
+    
+}
+
+.contact form .input-box input,
+.contact form textarea {
+    width: 100%;
+    padding: 0.2rem;
+    font-size: 1.2rem;
+    color: black;
+    background:rgba(191, 191, 191, 0.267);
+    border-radius: .8rem;
+    margin: .7rem 0;
+}
+
+.contact form .input-box input{
+    width: 49%;
+    
+}
+.area{
+ width: 100%;
+ height: 220px;
+ background: rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+          box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.1)));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+}
+
+.contact form textarea{
+    width: 100%;
+    height: -20%;
+    
+}
+
+.contact form .btn{
+    margin-top: 2rem;
+    position: relative;
+    left: 45%;
+    position: relative;
+    top: -90px;
+    width: 180px;
+    cursor: pointer;
+}
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 1rem 6%;
+  height: 20px;
+  background: rgba(182, 181, 181, 0.303);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.1)), to(rgba(255, 255, 255, 0.1)));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+}
+
+.footer-text p {
+  font-size: 0.8rem;
+  color: #545454;
+  position: relative;
+  top: -8px;
+  margin-left: 120px;
+}
+
+.footer-iconTop {
+  border: #0056b3 solid 2px;
+  border-radius: 50%;
+  background-color: #007bffb7;
+  color: white;
+  position: relative;
+  top: -25px;
+}
+
+.footer-iconTop a {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+ 
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 20px;
+  -webkit-transition: .5s ease;
+  -o-transition: .5s ease;
+  transition: .5s ease;
+  
+}
+
+.footer-iconTop a:hover {
+  -webkit-box-shadow: 0 0 1rem #7c7c7c51;
+          box-shadow: 0 0 1rem #7c7c7c51;
+}
+
+.footer-iconTop a i {
+  font-size: 2.4rem;
+  color: #0056b3
+}
+
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="logo-container">
+      <a href="./index.html" style="margin-left: 22px;font-family:Protest Revolution, sans-serif; font-size: 40px;">E2 Solution</a>
+    </div>
+    <div class="navigation-items">
+      <a href="#abouts">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact Me</a>
+      <button id="themeToggle" class="theme-toggle">&#x263e;</button>
+    </div>
+    <div class="hamburger" style="color:rgb(0, 0, 0)">
+      <button id="openHam">&#9776;</button>
+      <button id="closeHam">&#x2716;</button>
+    </div>
+  </nav>
+
+
+  
+<div class="box" id="box">
+  <div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://th.bing.com/th/id/OIP.Jw1ij013jxt8j7XConLE_gHaE7?rs=1&pid=ImgDetMain" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item h-75">
+        <img src="https://www.alliance2020.com/wp-content/uploads/office-workers.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://th.bing.com/th/id/OIP.E9NpkWWV7DHSdYQASeYDyAHaE8?rs=1&pid=ImgDetMain" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+  <div class="popup" >
+    <div class="popup-inner" style="
+    box-shadow:-4px -4px 6px rgba(255, 255, 255, 0.269),inset 8px 8px 8px rgba(0, 0, 0, 0.434), 8px 8px 8px rgba(0, 0, 0, 0.47);width: 100%;height: 110%;">
+      <span class="close">&times;</span>
+      <div class="container4">
+        <h1 style="text-align: center; font-size: 60px;position: relative;font-family:Protest Revolution, sans-serif;top: -40px;left:-20px; color: rgb(255, 255, 255);">Welcome  To  E2Solution</h1>
+        <p style="font-size: 30px;">Quality Websites on Demand</p>
+        <p style="font-size: 20px;">
+            Join us on a journey to revolutionize your online presence with E2 Solutions. Elevate your business to new heights by harnessing the power of cutting-edge technology and unparalleled expertise. Experience the thrill of reaching new audiences, captivating customers, and driving growth like never before." </p>
+        <p>"Let's embark on this innovative voyage together and watch your business soar to success in the digital realm."</p>
+        <a href="https://accounts.google.com/AccountChooser?continue=https://google.com" class="btn">See Projects</a>
+    </div>
+     
+    </div>
+  </div>
+
+  <div class="form">
+    <form id="contactForm" action="/action_page.php">
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Email</label>
+      </div>
+      <div class="col-75">
+        <input type="email" id="Email" name="email" placeholder="Your email Id..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label>Phone no</label>
+      </div>
+      <div class="col-75">
+        <input type="number" id="number" name="number" placeholder="Your email mobile number..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="subject">Query</label>
+      </div>
+      <div class="col-75">
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:80px;width:490px"></textarea>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+    </form>
+  </div>
+ 
+    <div class="projects" id="projects">MY PROJECTS</div>
+    <div class="gallery">
+      <img src="https://th.bing.com/th/id/OIP.ms50_iBST_Veoc19V73YHgHaEK?rs=1&pid=ImgDetMain" alt="">
+      <img src="https://th.bing.com/th/id/OIP.mCap8EBzuCnp_ctp0OslOgHaEK?w=1920&h=1080&rs=1&pid=ImgDetMain" alt="">
+      <img src="https://wallpaperaccess.com/full/1657889.jpg" alt="">
+      <img src="https://wallpapercave.com/wp/wp2044704.jpg" alt="">
+      <img src="https://wallpaperaccess.com/full/1658350.jpg" alt="">
+      <img src="https://jbsoftware.ca/wp-content/uploads/web-design.jpg" alt="">
+    </div>
+
+<div class="about" id="abouts">
+
+  <h1>About us</h1>
+  <div class="content" style="width: 70%; height:auto">
+  <p>The company, founded in 2004, aimed to simplify the process of developing web solutions and offer high-quality services in multi-platform application development. Our goal is to empower customers by providing them with tools to seamlessly integrate their business and marketing strategies with various digital platforms, including the internet, mobile applications, content management systems, and other emerging technologies. With a focus on innovation and customer satisfaction, we strive to deliver cutting-edge solutions that meet the evolving needs of our clients in the digital landscape.</p>
+</div>
+</div>
+
+<div class="title">
+  <h1>Services</h1>
+</div>
+<div class="cards">
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <h1 >Website Design</h1>
+      <p>Ecommerce means performing business dealings online through Internet. ECommerce website development makes your site a wide-ranging selling tool. Whatever your business, an online catalog, retail store, or entire mall, you need the software, hosting, support and expertise to make your company succeed on the Web. </p>
+    </div>
+    <div class="flip-card-back">
+      <img src="https://i.ytimg.com/vi/3aOU9MbITlM/maxresdefault.jpg" alt="">
+    </div>
+  </div>
+</div>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <h1>Search marketing</h1>
+      <p>While deciding for online marketing campaign by any company, Search Engine Optimization (SEO) is most critical part of the process. SEO involves on-page and off-page activities like development of your website is structured in a proper manner and certain very important guidelines are considered apart from doing the submission of optimized articles .</p>
+    </div>
+    <div class="flip-card-back">
+      <img src="https://josephmuciraexclusives.com/wp-content/uploads/2019/09/Search-Engine-Marketing.jpg" alt="">
+    </div>
+  </div>
+</div>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <h1>Mobile apps</h1>
+      <p>
+        Android is one the most commonly used mobile operating system in the world, Android now virtually runs in one out of every two Smartphone’s and tablet computers in India. This marvellous growth in Android boosted freeware Operating System developed with millions of different applications to assist and entertain the user in every single way.
+      </p>
+    </div>
+    <div class="flip-card-back">
+      <img src="https://cdn.dribbble.com/users/3862493/screenshots/13823279/media/d755a1fac0536ff59d837e779704a533.png" alt="">
+    </div>
+  </div>
+</div>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <h1>Web hosting</h1>
+      <p>Dedicated Server designed to keep critical applications and resource-intensive websites is our forte. We have Reseller hosting tie-up with UK web hosting Data Center as well as Indian Data Center. Webfries provide cheap web hosting services for dedicated server in India. </p>
+    </div>
+    <div class="flip-card-back">
+      <img src="https://th.bing.com/th/id/OIP.kYqRAbNt8w8NChw_yPWV_wHaE8?rs=1&pid=ImgDetMain" alt="">
+    </div>
+  </div>
+</div>
+</div>
+
+<section class="contact" id="contact">
+  <h2 class="heading">
+      Contact <span>Me</span>
+  </h2>
+  <form action="#">
+      <div class="input-box">
+          <input type="text" placeholder="Full Name">
+          <input type="email" placeholder="Email Address">
+
+      </div>
+      <div class="input-box">
+          <input type="text" placeholder="Mobile Number">
+          <input type="text" placeholder="Email Subject">
+          
+      </div>
+      <textarea class="area" name="" id="" cols="30" rows="10" placeholder="my Message"></textarea>
+      <input type="submit" value="Send Message" class="btn">
+  </form>
+</section>
+
+<footer class="footer">
+  <div class="footer-text" style="display: flex;flex-direction: row;">
+      <p style="color: #111;">Copyright &copy; <a href="https://www.e2solution.com/index.php?module=content&pid=Privacy-Policy">privacy policy</a></p>
+      <p style="color: #111;">call:91-88003 38049</p>
+      <p style="color: #111;">Email - support@e2solution.com      </p>
+  </div>
+  <div class="footer-iconTop">
+      <a href="#box">&#10506;</a>
+       
+  </div>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    document.getElementById('themeToggle').addEventListener('click', function () {
+  document.body.classList.toggle('dark-mode');
+  this.classList.toggle('active');
+});
+const popup = document.querySelector('.popup');
+
+setTimeout(function () {
+  popup.classList.add('show')
+}, 5000);
+
+popup.querySelector('.close').addEventListener('click', function () {
+  popup.classList.remove('show')
+});
+
+popup.querySelector('.add-to-favorites').addEventListener('click', function () {
+  popup.classList.remove('show')
+});
+
+
+//send data
+
+
+document.getElementById('contactForm').addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  const formObject = Object.fromEntries(formData.entries());
+
+  try {
+    const response = await fetch('https://your-api-endpoint.com/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formObject)
+    });
+
+    if (!response.ok) {
+      throw new Error('Error sending form data');
+    }
+
+    const result = await response.json();
+    console.log(result);
+
+    // Reset the form if needed
+    event.target.reset();
+
+    // Display a success message
+    alert('Your message has been sent successfully!');
+  } catch (error) {
+    console.error(error);
+    // Display an error message
+    alert('An error occurred while sending your message. Please try again later.');
+  }
+});
+  </script>
+</body>
+</html>
